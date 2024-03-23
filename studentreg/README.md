@@ -1,2 +1,2 @@
 
-# Browser for displaying general student registration project data and IDE CLI for data input is used.
+# The browser is used for displaying data in this simple student registration project and  IDE CLI is used for data input.
