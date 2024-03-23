@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
+@RequestMapping("/student")
 public class Controller {
     @Autowired
     StudentService studentService;
@@ -32,7 +33,7 @@ public class Controller {
     }
 
 
-    @GetMapping("/findstudent")
+    @GetMapping("/search")
     @ResponseBody
     public Student findStudent(Student student, @RequestParam long roll) {
         return studentService.findByRoll(student,roll);
@@ -50,3 +51,4 @@ public class Controller {
         studentService.deleteStudentByRoll(roll);
     }
 }
+
