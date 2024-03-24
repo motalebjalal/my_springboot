@@ -19,7 +19,6 @@ public class Student {
     String department;
     @Column(nullable = false)
     @NotEmpty(message = "Name must not be empty")
-    //@Pattern(regexp = "[a-zA-Z]+", message = "Name must contain only letters from a to z")
     @Pattern(regexp = "[a-zA-Z ]+", message = "Name must contain only letters from a to z and A to Z")
 
     String name;
@@ -71,3 +70,4 @@ public class Student {
         this.age = age;
     }
 }
+
