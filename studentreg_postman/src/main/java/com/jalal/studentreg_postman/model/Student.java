@@ -8,8 +8,8 @@ import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "registration")
-
 public class Student {
+
     @Id
     @Min(value = 1, message = "Roll number must be greater than or equal to 1")
     @Max(value = 9, message = "Roll number must be less than or equal to 9")
@@ -17,13 +17,13 @@ public class Student {
 
     @NotEmpty(message = "Department must not be empty")
     String department;
+    
     @Column(nullable = false)
     @NotEmpty(message = "Name must not be empty")
     @Pattern(regexp = "[a-zA-Z ]+", message = "Name must contain only letters from a to z and A to Z")
-
     String name;
+    
     @Column(nullable = false)
-
     @NotBlank(message = "Age is required")
     @Pattern(regexp = "[1-9]+", message = "Age must contain only numbers from 1 to 9 and letters")
     String age;
