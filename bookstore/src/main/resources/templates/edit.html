@@ -1,0 +1,39 @@
+<div th:replace="header"></div>
+<div class="content">
+<form action="/book/update" method="post" th:object="${book}">
+    <input type="hidden" th:field="*{id}" /> <!-- Ensure the ID is sent with the form -->
+    <div class="form-group">
+        <label for="bookName">Book Name:</label>
+        <input type="text" class="form-control" id="bookName" th:field="*{bookName}" required>
+    </div>
+    <div class="form-group">
+        <label for="title">Book Title:</label>
+        <input type="text" class="form-control" id="title" th:field="*{title}" required>
+    </div>
+    <div class="form-group">
+        <label for="author">Book Author:</label>
+        <input type="text" class="form-control" id="author" th:field="*{author}" required>
+    </div>
+    <div class="form-group">
+        <label for="edition">Book Edition:</label>
+        <input type="text" class="form-control" id="edition" th:field="*{edition}" required>
+    </div>
+    <div class="form-group">
+        <label for="pageCount">Page of Number:</label>
+        <input type="text" class="form-control" id="pageCount" th:field="*{pageCount}" required>
+    </div>
+    <div class="form-group">
+        <label for="country">Country:</label>
+        <input type="text" class="form-control" id="country" th:field="*{country}" required>
+    </div>
+    <div class="form-group m-2">
+        <label for="language">Book Language:</label>
+        <input type="text" class="form-control" id="language" th:field="*{language}" required>
+    </div>
+    <button type="submit" class="btn btn-primary m-3">Submit</button>
+</form>
+</div>
+<div th:replace="footer"></div>
+
+
+
