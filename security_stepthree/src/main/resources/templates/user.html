@@ -1,0 +1,8 @@
+<div th:replace="header"></div>
+<div class="content_body">
+<h1> Welcome User Page </h1>
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        This will only be displayed if authenticated user has role ROLE_ADMIN.
+    </div>
+</div>
+<div th:replace="footer"></div>
