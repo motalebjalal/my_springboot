@@ -1,4 +1,4 @@
-package com.jalal.securitystepjwt2.securityconfig;
+package com.jalal.security_stepjwt2.securityconfig;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

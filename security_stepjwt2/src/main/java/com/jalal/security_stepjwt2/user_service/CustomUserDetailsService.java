@@ -1,8 +1,8 @@
-package com.jalal.securitystepjwt2.user_service;
+package com.jalal.security_stepjwt2.user_service;
 
-import com.jalal.securitystepjwt2.domain.UserPrincipal;
-import com.jalal.securitystepjwt2.entity.UserEntity;
-import com.jalal.securitystepjwt2.repository.UserEntityRepo;
+import com.jalal.security_stepjwt2.domain.UserPrincipal;
+import com.jalal.security_stepjwt2.entity.UserEntity;
+import com.jalal.security_stepjwt2.repository.UserEntityRepo;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

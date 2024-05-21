@@ -1,4 +1,4 @@
-package com.jalal.securitystepjwt2.entity;
+package com.jalal.security_stepjwt2.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

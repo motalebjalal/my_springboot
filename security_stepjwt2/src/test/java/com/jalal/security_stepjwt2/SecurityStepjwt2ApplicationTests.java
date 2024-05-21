@@ -1,4 +1,4 @@
-package com.jalal.securitystepjwt2;
+package com.jalal.security_stepjwt2;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

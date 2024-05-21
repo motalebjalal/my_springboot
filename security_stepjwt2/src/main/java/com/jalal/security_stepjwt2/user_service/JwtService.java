@@ -1,4 +1,4 @@
-package com.jalal.securitystepjwt2.user_service;
+package com.jalal.security_stepjwt2.user_service;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

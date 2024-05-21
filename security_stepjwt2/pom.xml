@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.jalal</groupId>
-    <artifactId>security-stepjwt2</artifactId>
+    <artifactId>security_stepjwt2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>security-stepjwt2</name>
     <description>security-stepjwt2</description>

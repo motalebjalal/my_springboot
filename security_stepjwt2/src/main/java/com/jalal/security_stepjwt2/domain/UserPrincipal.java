@@ -1,6 +1,6 @@
-package com.jalal.securitystepjwt2.domain;
+package com.jalal.security_stepjwt2.domain;
 
-import com.jalal.securitystepjwt2.entity.UserEntity;
+import com.jalal.security_stepjwt2.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

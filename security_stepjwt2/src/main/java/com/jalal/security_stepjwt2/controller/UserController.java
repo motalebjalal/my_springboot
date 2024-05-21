@@ -1,7 +1,7 @@
-package com.jalal.securitystepjwt2.controller;
+package com.jalal.security_stepjwt2.controller;
 
-import com.jalal.securitystepjwt2.entity.UserEntity;
-import com.jalal.securitystepjwt2.user_service.UserEntityService;
+import com.jalal.security_stepjwt2.entity.UserEntity;
+import com.jalal.security_stepjwt2.user_service.UserEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

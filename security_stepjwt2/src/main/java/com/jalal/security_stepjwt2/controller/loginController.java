@@ -1,7 +1,7 @@
-package com.jalal.securitystepjwt2.controller;
+package com.jalal.security_stepjwt2.controller;
 
-import com.jalal.securitystepjwt2.entity.UserEntity;
-import com.jalal.securitystepjwt2.user_service.JwtService;
+import com.jalal.security_stepjwt2.entity.UserEntity;
+import com.jalal.security_stepjwt2.user_service.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
