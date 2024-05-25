@@ -49,24 +49,23 @@ public class JwtService {
         Map<String, Object> claims = new HashMap<>();
 
         claims.put("iat", System.currentTimeMillis());
-        claims.put("exp", System.currentTimeMillis() + 1000 + 60 + 3);
+        claims.put("exp", System.currentTimeMillis() + 1000*60*70);
         claims.put("sub", username);
-        claims.put("iss", "https://localhost:6065");
+        claims.put("iss", "https://localhost:6066");
 
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(username)
-                .signWith(SignatureAlgorithm.HS256, secretKey).compact();
+                .signWith(getKey(), SignatureAlgorithm.HS256).compact();
     }
 
-
-
-    // Token extract start area here
+    
     private Key getKey() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
+    // Token extract start area here
 
     public String extractUserName(String token) {
         return extractClaims(token, Claims::getSubject);
@@ -98,8 +97,10 @@ public class JwtService {
     }
 
     private Date extractExpiration(String token) {
+        System.out.println("token expiration check " + token);
         return extractClaims(token, Claims::getExpiration);
     }
 
 
 }
+

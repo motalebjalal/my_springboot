@@ -1,6 +1,7 @@
 package com.jalal.security_stepjwt3.securityconfig;
 
 
+import com.jalal.security_stepjwt3.user_service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +12,6 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -21,31 +21,30 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-    @Autowired
-    private final UserDetailsService customUserDetailsService;
-    private JwtFilter jwtFilter;
 
-    public WebSecurityConfig(UserDetailsService customUserDetailsService, JwtFilter jwtFilter) {
-        this.customUserDetailsService = customUserDetailsService;
-        this.jwtFilter = jwtFilter;
-    }
+    @Autowired
+    private CustomUserDetailsService customUserDetailsService;
+
+    @Autowired
+    private JwtFilter jwtFilter;
 
 
     @Bean
-    public static PasswordEncoder passwordEncoder(){
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(
-                        (authorize)-> authorize
-                                .requestMatchers("/form", "/login")
+                        (authorize) -> authorize
+                                .requestMatchers("create", "login")
                                 .permitAll()
-                                .anyRequest().authenticated())
+                                .requestMatchers("/user").hasAuthority("ROLE_USER")
+                                .requestMatchers("/admin").hasAuthority("ROLE_ADMIN")
+                )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
@@ -53,14 +52,13 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-
     @Bean
-    public AuthenticationProvider authenticationProvider(){
-       DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-       provider.setPasswordEncoder(passwordEncoder());
-       provider.setUserDetailsService(customUserDetailsService);
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(passwordEncoder());
+        provider.setUserDetailsService(customUserDetailsService);
 
-       return provider;
+        return provider;
     }
 
     @Bean
@@ -70,3 +68,4 @@ public class WebSecurityConfig {
     }
 
 }
+

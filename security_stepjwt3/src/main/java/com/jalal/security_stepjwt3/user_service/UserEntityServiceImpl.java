@@ -13,17 +13,13 @@ public class UserEntityServiceImpl implements UserEntityService {
     @Autowired
     private UserEntityRepo userEntityRepo;
 
-
-
-
     @Override
-    public String saveUser(UserEntity user) {
-
+    public UserEntity saveUser(UserEntity user) {
         String encodedPassword = passwordEncoder().encode(user.getPassword());
         user.setPassword(encodedPassword);
-        userEntityRepo.save(user);
-        return user.getUsername();
+        return userEntityRepo.save(user);
     }
 
 
 }
+

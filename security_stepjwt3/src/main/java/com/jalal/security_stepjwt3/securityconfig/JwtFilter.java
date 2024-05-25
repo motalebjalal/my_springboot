@@ -29,14 +29,13 @@ public class JwtFilter extends OncePerRequestFilter {
     @Autowired
     CustomUserDetailsService customUserDetailsService;
 
-
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String authHeader = request.getHeader("Authorization");
         String token = null;
         String userName = null;
 
-        if (authHeader != null && authHeader.startsWith("Bearar ")) {
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
             token = authHeader.substring(7);
             userName = jwtService.extractUserName(token);
         }
@@ -52,3 +51,4 @@ public class JwtFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 }
+
